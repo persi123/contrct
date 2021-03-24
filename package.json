@@ -13,6 +13,7 @@
     "react-number-format": "^4.5.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "sass": "^1.32.8",
     "styled-components": "^5.2.1",
     "use-force-update": "^1.0.7",
     "web-vitals": "^1.0.1",
@@ -41,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0"
   }
 }
