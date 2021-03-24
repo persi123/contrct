@@ -1,0 +1,87 @@
+ 
+.amount-modal {
+  min-width: 500px;
+  padding: 40px 40px;
+  background: #1f2933;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 8px;
+  align-items: center;
+}
+
+.modal-header{
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.modal-content {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 40px;
+}
+
+.modal-actions a {
+  box-sizing: border-box;
+  padding: 16px 40px;
+  margin: 0px 8px;
+  line-height: 16px;
+  background:#1853b0;
+  display: inline-block;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.modal-actions .nah {
+  color: #fff;
+  background: #1853b0
+}
+
+.modal-actions .nah:hover {
+  background:#1853b0
+}
+
+.modal-actions a:hover {
+  background: #1853b0
+}
+
+.modal {
+    text-align: center;
+  }
+  
+  @media screen and (min-width: 768px) { 
+    .modal:before {
+      display: inline-block;
+      vertical-align: middle;
+      content: " ";
+      height: 100%;
+    }
+  }
+  
+  .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  .form-control:valid {
+    background:transparent;
+    border-color: #00a1fd ;
+    color:#fff;   
+  
+  }
+
+  .input-group>.input-group-prepend>.input-group-text {
+    background-color:  #25313d!important;
+    color:#fff;
+    border-color: #00a1fd;  
+}
+.form-control:focus {
+    border-color: #00a1fd;
+   
+} 
