@@ -36,9 +36,7 @@ export const Header = ({handlePoolMove}) => {
                 <li className={`d-none d-lg-block ${pathname === "/uniswap" ? "active" : ""}`} >
                     <a className="nav-link" href="/#/" onClick={handlePoolMove}>Pools</a>
                 </li>
-                <li className={`d-none d-lg-block ${pathname === "/uniswap" ? "active" : ""}`} >
-                    <a className="nav-link" href="/#/" onClick={handlePoolMove}>Transaction History</a>
-                </li>
+               
                  </ul>    
                 </li>
                 <li className={`d-lg-none my-1 my-lg-0 nav-item ${pathname === "/" ? "active" : ""}`} >

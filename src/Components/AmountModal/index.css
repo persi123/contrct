@@ -9,6 +9,7 @@
   transform: translateX(-50%) translateY(-50%);
   border-radius: 8px;
   align-items: center;
+  max-height: 290px;
 }
 
 .modal-header{

@@ -29,13 +29,14 @@ const AmountModal = ({
   }
 
   const handleInputAmount = (e) => {
+    const net_balance=utils.numberWithCommas(parseFloat(balance).toFixed(3));
     setamountError(false);
     setinsufficientFundError(false);
     let val = parseFloat(e.target.value);
     if (!val) {
       setamountError(true);
       setinsufficientFundError(false);
-    } else if (val >= balance) {
+    } else if (val >= net_balance) {
       setamountError(false);
       setinsufficientFundError(true);
     } else setAmount(val);
@@ -77,7 +78,7 @@ const AmountModal = ({
             </AvailableBalance>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text"> A5T-USDC</span>
+                <span class="input-group-text">A5T-USDC</span>
               </div>
               <input
                 value={amount}
@@ -100,10 +101,10 @@ const AmountModal = ({
             </MaxButton>
             <span className="text-danger">{getErrorMsg()}</span>
             <ButtonGroup>
-              <Button type="button" onClick={() => handleClose()}>
+              <Button   onClick={() => handleClose()}>
                 Cancel
               </Button>
-              <Button type="button" onClick={() => handleConfirm()}>
+              <Button  onClick={() => handleConfirm()}>
                 Confirm
               </Button>
             </ButtonGroup>
@@ -146,11 +147,11 @@ const Button = styled.button`
   font-size: 16px;
   font-weight: 700;
   outline: none !important;
-  display: block;
   font-style: italic;
   padding: 6px 0;
   border-radius: 2px;
   color: #fff;
+  border:none;
 `;
 
 const MaxButton = styled.button`
