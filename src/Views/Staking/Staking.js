@@ -334,9 +334,9 @@ const A5TStaking = () => {
     return false;
   };
 
-  const getHistory = () => {
+  const getHistory = async () => {
     var array = [];
-    var events = eth.StakingContract.getPastEvents(
+    var events = await eth.StakingContract.getPastEvents(
       "allEvents",
       { filter: {}, fromBlock: 0, toBlock: "latest" },
       function (error, log) {
@@ -346,6 +346,7 @@ const A5TStaking = () => {
     array.sort(function (a, b) {
       return b.blockNumber - a.blockNumber;
     });
+    //console.log(array);
     sethistory(array);
   };
 
