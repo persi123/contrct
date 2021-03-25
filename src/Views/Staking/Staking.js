@@ -506,7 +506,7 @@ const A5TStaking = () => {
           </div>
         </div>
       </div>
-      <SubHeader title={"POOLS TRANSACTION DETAILS"} />
+      <SubHeader title={"POOLS DETAILS"} />
       <div
         className="staking-container"
         ref={moveToPool}
@@ -799,6 +799,7 @@ const A5TStaking = () => {
       >
         <div className="staking-section-3 rounded-lg">
           {/* <TextHeader title={"Transaction History"} /> */}
+          <SubHeader title={"POOLS TRANSACTION HISTORY"} />
           <StakingTableLayout>
             <table className="new-table">
               <thead>

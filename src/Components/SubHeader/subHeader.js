@@ -14,7 +14,7 @@ export const SubHeader = ({title}) => {
 const Section = styled.section`
 width : min(85%,1320px);
 height : 40px;
-margin : 1rem auto 1rem;
+margin : 0.5rem auto 0.2rem;
 display : flex;
 justify-content : center;
 align-items : center;
