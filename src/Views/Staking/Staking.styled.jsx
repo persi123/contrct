@@ -38,7 +38,7 @@ export const CardTitle = styled.div`
 export const CardSubTitle = styled.div`
   text-align: center;
   margin: 0.5em auto;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   width: 82%;
   text-transform:uppercase;
@@ -268,6 +268,14 @@ export const ButtonGroup = styled.div`
   padding: 0 10px;
 `;
 
+export const StakeButtonGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  width: ${({ width = "95%" }) => width};
+  margin: 1rem auto;
+  padding: 0 10px;
+`;
+
 export const Button = styled.div`
   // border : 1px solid #aaaaaa;
   // box-shadow: 0 0px 0px 2px ${({ border }) =>
@@ -324,7 +332,7 @@ width:100%;
 text-align:center;
 `
 export const StakingTableLayout = styled.div`
-  width: 90%;
+  width: 100%;
   min-width: 280px;
   box-shadow: #020024 0px 0px 3px 0px;
   border-radius: 10px;

@@ -1,11 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Modal } from "react-bootstrap";
 import utils from "../../utils";
 import "./index.css";
 
-const numberFixed = (n, fixed) =>
-  ~~(Math.pow(10, fixed) * n) / Math.pow(10, fixed);
+function toFixed(num, fixed) {
+  var re = new RegExp("^-?\\d+(?:.\\d{0," + (fixed || -1) + "})?");
+  return  num.toString().match(re)[0];
+}
 
 const AmountModal = ({
   poolNumber,
@@ -14,28 +16,44 @@ const AmountModal = ({
   balance,
   getStakeDetail,
 }) => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [amountError, setamountError] = useState(false);
   const [insufficientFundError, setinsufficientFundError] = useState(false);
 
+  useEffect(() => {
+    setAmount("");
+    return () => {
+      setamountError(false);
+      setinsufficientFundError(false);
+      setAmount("");
+    };
+  }, []);
+
   const handleConfirm = (e) => {
-    if (amount && amountError===false && insufficientFundError===false)
-      getStakeDetail(poolNumber, amount);
-    else if (!amount) setamountError(true);
+    if (amount && amountError === false && insufficientFundError === false) {
+      const amountToSend = toFixed(amount, 2);
+      getStakeDetail(poolNumber, parseFloat(amountToSend));
+    } else if (!amount) setamountError(true);
   };
 
-  const handleMaxAmount=()=>{
-    setAmount(numberFixed(balance,2))
-  }
+  const handleMaxAmount = () => {
+    setamountError(false);
+    setinsufficientFundError(false);
+    const netBalance = utils.numberWithCommas(parseFloat(balance).toFixed(3));
+    setAmount(toFixed(netBalance, 2));
+  };
 
   const handleInputAmount = (e) => {
     setamountError(false);
     setinsufficientFundError(false);
     let val = parseFloat(e.target.value);
+    const netBalance = utils.numberWithCommas(parseFloat(balance).toFixed(3));
+
     if (!val) {
       setamountError(true);
       setinsufficientFundError(false);
-    } else if (val >= balance) {
+      setAmount("");
+    } else if (val >= netBalance) {
       setamountError(false);
       setinsufficientFundError(true);
     } else setAmount(val);
@@ -51,13 +69,13 @@ const AmountModal = ({
     );
   };
 
-  const handleClose=()=>{
+  const handleClose = () => {
     hideModal();
     setamountError(false);
-    setAmount(0);
+    setAmount("");
     setinsufficientFundError(false);
-  }
-  
+  };
+
   return showModal ? (
     <>
       <Modal
@@ -66,7 +84,7 @@ const AmountModal = ({
         className="modal-wallet-transform"
       >
         <Modal.Body>
-          <div class="amount-modal">
+          <div className="amount-modal">
             <ModalHeading>A5T-USDC LP STAKING</ModalHeading>
             <AvailableBalance>
               Available Balance :
@@ -75,37 +93,28 @@ const AmountModal = ({
                 A5T-USDC
               </span>
             </AvailableBalance>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"> A5T-USDC</span>
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text"> A5T-USDC</span>
               </div>
               <input
                 value={amount}
                 type="number"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter amount"
                 onChange={(e) => handleInputAmount(e)}
               />
+              <div className="input-group-prepend">
+                <span className="max-btn" onClick={() => handleMaxAmount()}>
+                  MAX
+                </span>
+              </div>
             </div>
-            <MaxButton
-              onClick={() =>handleMaxAmount()}
-              className="resend-email-btn"
-              style={{
-                outline: "none",
-              }}
-            >
-              <span>
-                <b>MAX</b>
-              </span>
-            </MaxButton>
+
             <span className="text-danger">{getErrorMsg()}</span>
             <ButtonGroup>
-              <Button type="button" onClick={() => handleClose()}>
-                Cancel
-              </Button>
-              <Button type="button" onClick={() => handleConfirm()}>
-                Confirm
-              </Button>
+              <Button onClick={() => handleClose()}>Cancel</Button>
+              <Button onClick={() => handleConfirm()}>Confirm</Button>
             </ButtonGroup>
           </div>
         </Modal.Body>
@@ -146,11 +155,11 @@ const Button = styled.button`
   font-size: 16px;
   font-weight: 700;
   outline: none !important;
-  display: block;
   font-style: italic;
   padding: 6px 0;
   border-radius: 2px;
   color: #fff;
+  border: none;
 `;
 
 const MaxButton = styled.button`
