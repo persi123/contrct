@@ -82,10 +82,12 @@
 }
 .form-control:focus {
   border-color: #00a1fd;
-  border-radius: 5px;
+  background-color: #1f2933;
   border-right: none;
-  box-shadow: none;
+  color:#fff;
+  box-shadow:none;
 }
+ 
 .form-control {
   background: transparent;
   border-color: #00a1fd;
