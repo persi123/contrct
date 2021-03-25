@@ -51,15 +51,16 @@ const A5TStaking = () => {
 
   useEffect(() => {
     connect();
-    setTimeout(() => {
-      tick();
-    }, 3000);
+    tick();
+    // setTimeout(() => {
+    //   tick();
+    // }, 3000);
 
-    // var intervalId = setInterval(tick, 3000);
-    // setintervalHandle(intervalId)
-    //  return ()=>{
-    //     clearInterval(intervalHandle);
-    //  }
+    var intervalId = setInterval(tick, 3000);
+    setintervalHandle(intervalId)
+     return ()=>{
+        clearInterval(intervalHandle);
+     }
   }, []);
 
   const handlePoolMove = (event) => {
@@ -375,7 +376,7 @@ const A5TStaking = () => {
               >
                 <CardFields>
                   <CardFieldName>Staking Contract</CardFieldName>
-                  <CardFieldValue>{contracts.Staking_Address}</CardFieldValue>
+                  <CardFieldValue  onClick={() =>{window.open(`https://ropsten.etherscan.io/address/${contracts.Staking_Address}`, '_blank')}} >{contracts.Staking_Address}</CardFieldValue>
                 </CardFields>
                 <CardFields>
                   <CardFieldName>Staking Contract Balance</CardFieldName>
