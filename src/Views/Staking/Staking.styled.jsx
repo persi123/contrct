@@ -38,7 +38,7 @@ export const CardTitle = styled.div`
 export const CardSubTitle = styled.div`
   text-align: center;
   margin: 0.5em auto;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   width: 82%;
   text-transform:uppercase;

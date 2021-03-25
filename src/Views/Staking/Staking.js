@@ -70,7 +70,7 @@ const A5TStaking = () => {
   };
   const handleStakeAmount = (pool_number, value) => {
     setshowModal(false);
-    //onStake(pool_number, value);
+    onStake(pool_number, value);
   };
   const AlertFn = [
     {
