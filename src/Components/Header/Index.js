@@ -15,10 +15,11 @@ export const Header = ({handlePoolMove}) => {
     
      <nav className="navbar navbar-expand-lg navbar-mainbg">
         <a className="navbar-brand navbar-logo" href="#">
-        <img src="./Alpha5-logo.svg" alt="N/A" style={{
+        {/* <img src="./Alpha5-logo.svg" alt="N/A" style={{
             width : "170px",
             height : "60px"
-        }} />
+        }} /> */}
+        A<span>5</span>T
         </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i className="fas fa-bars text-white"></i>
@@ -45,11 +46,11 @@ export const Header = ({handlePoolMove}) => {
                 <li className={`d-lg-none my-1 my-lg-0 nav-item ${pathname === "/" ? "active" : ""}`}>
                     <a className="d-inline-block nav-link" href="/#/" onClick={handlePoolMove}>Pool</a>
                 </li>
-                <li className={`nav-item my-1 my-lg-0 exchange ${pathname === "/admin" ? "active" : ""}`} onClick={() => NavigateTo('https://www.alpha5.io/#/', '_blank')}>
+                {/* <li className={`nav-item my-1 my-lg-0 exchange ${pathname === "/admin" ? "active" : ""}`} onClick={() => NavigateTo('https://www.alpha5.io/#/', '_blank')}>
                    <div>
                    <a className="nav-link" href="https://www.alpha5.io/#/" target="_blank">Exchange</a>
                    </div>
-                </li>
+                </li> */}
             </ul>
         </div>
     </nav>

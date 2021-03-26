@@ -2,6 +2,8 @@ $mobile-width : 640px;
 $tablet-width : 768px;
 $desktop-width : 1024px;    
 
+
+
 @mixin mobile {
      @media (max-width : #{$mobile-width}) {
         @content;         
@@ -25,11 +27,26 @@ $desktop-width : 1024px;
 
 /*----------multi-level-accordian-menu------------*/
 .navbar-logo{
-	padding: 0px 15px;
+	padding: 11px 15px;
 	color: #fff;
+	font-size: 27px;
+	margin-left: 33px;
+	@font-face {
+	    font-family:pirulen-rg ;
+	    font-family:CodecPro-Bold;
+	    font-family:CodecPro-Light;
+	    src: url("./../../assets/pirulen-rg.otf") format('truetype');
+	    src: url("./../../assets/CodecPro-Bold.ttf")  format('truetype');
+	    src:url("./../../assets/CodecPro-Light.ttf")  format('truetype');
+
+}
+font-family: pirulen, CodecPro-Bold ,CodecPro-Light;
+}
+.navbar-logo span{
+	color: #00a1fd;
 }
 .navbar-mainbg{
-	max-width : 1440px;
+	max-width : 1340px;
 	margin : auto;
 	background-color: #181c1f;
  	padding: 0px;
@@ -42,6 +59,7 @@ $desktop-width : 1024px;
 #navbarSupportedContent ul{
 	padding: 0px;
 	margin: 0px;
+	width: 88%;
 }
 #navbarSupportedContent ul li a i{
 	margin-right: 10px;
