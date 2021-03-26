@@ -89,7 +89,7 @@ const AmountModal = ({
             <AvailableBalance>
               Available Balance :
               <span className="text-white">
-                {utils.numberWithCommas(parseFloat(balance).toFixed(3))}{" "}
+               <b> {utils.numberWithCommas(parseFloat(balance).toFixed(3))}{" "}</b>
                 A5T-USDC
               </span>
             </AvailableBalance>
@@ -127,17 +127,18 @@ const AmountModal = ({
 
 export default AmountModal;
 
-const ModalHeading = styled.h2`
+const ModalHeading = styled.span`
   color: #516b86;
   display: block;
   font-size: 24px;
   text-align: center;
   user-select: none;
+  font-weight:700;
 `;
 const AvailableBalance = styled.span`
   color: #516b86;
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   padding: 2rem 1rem 0.5rem 0rem;
   user-select: none;
 `;

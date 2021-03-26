@@ -6,7 +6,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import { Header } from '../Components/Header/Index';
-import {Staking} from './lazy'
+import {Staking,Admin} from './lazy'
 import {AlertControl} from '../Components/Alert/alert';
 import Loader  from '../Components/Loader/Loader';
 
@@ -20,7 +20,7 @@ export const App = () => {
       <Switch>
         {/* <Route exact path={"/"} component={Exchange} /> */}
         <Route exact path={"/"} component={Staking} />
-    
+        <Route exact path={"/admin"} component={Admin} />
       </Switch>
       </Suspense>
     </HashRouter>

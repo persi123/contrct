@@ -51,15 +51,16 @@ const A5TStaking = () => {
 
   useEffect(() => {
     connect();
-    setTimeout(() => {
-      tick();
-    }, 3000);
+    tick();
+    // setTimeout(() => {
+    //   tick();
+    // }, 3000);
 
-    // var intervalId = setInterval(tick, 3000);
-    // setintervalHandle(intervalId)
-    //  return ()=>{
-    //     clearInterval(intervalHandle);
-    //  }
+    var intervalId = setInterval(tick, 3000);
+    setintervalHandle(intervalId)
+     return ()=>{
+        clearInterval(intervalHandle);
+     }
   }, []);
 
   const handlePoolMove = (event) => {
@@ -334,9 +335,9 @@ const A5TStaking = () => {
     return false;
   };
 
-  const getHistory = () => {
+  const getHistory = async () => {
     var array = [];
-    var events = eth.StakingContract.getPastEvents(
+    var events = await eth.StakingContract.getPastEvents(
       "allEvents",
       { filter: {}, fromBlock: 0, toBlock: "latest" },
       function (error, log) {
@@ -346,6 +347,7 @@ const A5TStaking = () => {
     array.sort(function (a, b) {
       return b.blockNumber - a.blockNumber;
     });
+    //console.log(array);
     sethistory(array);
   };
 
@@ -375,7 +377,7 @@ const A5TStaking = () => {
               >
                 <CardFields>
                   <CardFieldName>Staking Contract</CardFieldName>
-                  <CardFieldValue>{contracts.Staking_Address}</CardFieldValue>
+                  <CardFieldValue  onClick={() =>{window.open(`https://ropsten.etherscan.io/address/${contracts.Staking_Address}`, '_blank')}} >{contracts.Staking_Address}</CardFieldValue>
                 </CardFields>
                 <CardFields>
                   <CardFieldName>Staking Contract Balance</CardFieldName>
@@ -506,7 +508,7 @@ const A5TStaking = () => {
           </div>
         </div>
       </div>
-      <SubHeader title={"POOLS TRANSACTION DETAILS"} />
+      <SubHeader title={"POOLS DETAILS"} />
       <div
         className="staking-container"
         ref={moveToPool}
@@ -799,6 +801,7 @@ const A5TStaking = () => {
       >
         <div className="staking-section-3 rounded-lg">
           {/* <TextHeader title={"Transaction History"} /> */}
+          <SubHeader title={"POOLS TRANSACTION HISTORY"} />
           <StakingTableLayout>
             <table className="new-table">
               <thead>
