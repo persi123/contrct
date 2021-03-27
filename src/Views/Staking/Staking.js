@@ -615,13 +615,13 @@ const A5TStaking = () => {
                 {poolbundle.length > 0 && !eth.isInfura ? (
                   isPoolComplete(poolbundle[0].pool_Duration) ? (
                     <>
-                      {!poolbundle[0].isClaimed ? (
+                      {!poolbundle[0].isClaimed && poolbundle[0].stakeAmount >0 ? (
                         <Button border="blue" onClick={() => claim(1)}>
                           Unstake and Claim Reward
                         </Button>
                       ) : (
                         <Button border="blue" disabled>
-                          Claimed
+                          Claimed or N/A
                         </Button>
                       )}
                     </>
@@ -758,13 +758,13 @@ const A5TStaking = () => {
                   {poolbundle.length > 0 && !eth.isInfura ? (
                     isPoolComplete(poolbundle[1].pool_Duration) ? (
                       <>
-                        {!poolbundle[1].isClaimed ? (
+                        {!poolbundle[1].isClaimed && poolbundle[1].stakeAmount >0 ? (
                           <Button border="blue" onClick={() => claim(2)}>
                             Unstake and Claim Reward
                           </Button>
                         ) : (
                           <Button border="blue" disabled>
-                            Claimed
+                            Claimed or N/A
                           </Button>
                         )}
                       </>
