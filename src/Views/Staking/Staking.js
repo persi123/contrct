@@ -46,7 +46,7 @@ const A5TStaking = () => {
   const [approved, setapproved] = useState(null);
   const [history, sethistory] = useState([]);
   const [popup, setpopup] = useState(null);
-  const [showModal, setshowModal] = useState(true);
+  const [showModal, setshowModal] = useState(false);
   const [selectedPool, setselectedPool] = useState("");
   const moveToPool = useRef(null);
 

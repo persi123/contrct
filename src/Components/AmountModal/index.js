@@ -39,7 +39,7 @@ const AmountModal = ({
   const handleMaxAmount = () => {
     setamountError(false);
     setinsufficientFundError(false);
-    const netBalance = utils.numberWithCommas(parseFloat(balance).toFixed(3));
+    //const netBalance = utils.numberWithCommas(parseFloat(balance).toFixed(3));
     setAmount(parseFloat(balance));
   };
 
