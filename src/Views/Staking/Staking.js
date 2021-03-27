@@ -623,7 +623,7 @@ const A5TStaking = () => {
                       ) : (
                         poolbundle[0].stakeAmount >0 ?
                           <InformationText>
-                             Claimed or N/A
+                             Claimed
                          </InformationText>
                          : null
                       )}
@@ -769,7 +769,7 @@ const A5TStaking = () => {
                         ) : (
                         poolbundle[1].stakeAmount >0 ?
                           <InformationText>
-                             Claimed or N/A
+                             Claimed
                          </InformationText>
                          : null
                         )}
