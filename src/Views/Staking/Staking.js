@@ -66,7 +66,7 @@ const A5TStaking = () => {
 
   const handlePoolMove = (event) => {
     window.scrollTo({
-      top: 1800,
+      top: 700,
       behavior: "smooth",
     });
   };
@@ -556,11 +556,11 @@ const A5TStaking = () => {
                   {poolbundle.length > 0 ? (
                       <> {utils.numberWithCommas(
                         Math.round(poolbundle[0].total_A5T_Reward / 1e18)
-                      )}{" "}</>
+                      )} A5T{" "}</>
                     ) : (
                       "-"
                     )}
-                    A5T
+                   
                   </CardFieldValue>
                 </CardFields>
                 <CardFields>
@@ -569,12 +569,12 @@ const A5TStaking = () => {
                   {poolbundle.length > 0 ? (
                       <> {utils.numberWithCommas(
                         parseFloat(poolbundle[0].TVL / 1e18).toFixed(3)
-                      )}{" "}</>
+                      )} A5T-USDC Pair Token{" "}</>
                     ) : (
                       "-"
                     )}
                     
-                    A5T-USDC Pair Token
+                    
                   </CardFieldValue>
                 </CardFields>
                 <CardFields>
@@ -585,13 +585,13 @@ const A5TStaking = () => {
                         ? utils.numberWithCommas(
                             parseFloat(poolbundle[0].stakeAmount).toFixed(3)
                           )
-                        : 0}{" "}</>
+                        : 0} A5T-USDC Pair Token {" "}</>
                     ) : (
                       "-"
                     )}
                     
                     
-                    A5T-USDC Pair Token
+                   
                   </CardFieldValue>
                 </CardFields>
                 <CardFields>
@@ -599,7 +599,9 @@ const A5TStaking = () => {
                     Your Reward at the end of the Pool
                   </CardFieldName>
                   <CardFieldValue>
-                    {poolbundle.length > 0 && poolbundle[0]?.TVL == 0
+                  {poolbundle.length > 0 ? (
+                      <> 
+                      {poolbundle[0]?.TVL == 0
                       ? 0
                       : utils.numberWithCommas(
                           parseFloat(
@@ -609,6 +611,10 @@ const A5TStaking = () => {
                           ).toFixed(3)
                         )}{" "}
                     A5T
+                      </>   ) : (
+                        "-"
+                      )}
+                    
                   </CardFieldValue>
                 </CardFields>
               </CardContent>
@@ -697,13 +703,13 @@ const A5TStaking = () => {
                       <>
                        {utils.numberWithCommas(
                         Math.round(poolbundle[1].total_A5T_Reward / 1e18)
-                      )}{" "}
+                      )} A5T{" "}
                       </>
                     ) : (
                       "-"
                     )}
                      
-                      A5T
+                      
                     </CardFieldValue>
                   </CardFields>
                   <CardFields>
@@ -713,13 +719,13 @@ const A5TStaking = () => {
                       <>
                         {utils.numberWithCommas(
                         parseFloat(poolbundle[1].TVL / 1e18).toFixed(3)
-                      )}{" "}
+                      )}  A5T-USDC Pair Token{" "}
                       </>
                     ) : (
                       "-"
                     )}
                      
-                      A5T-USDC Pair Token
+                    
                     </CardFieldValue>
                   </CardFields>
                   <CardFields>
@@ -731,13 +737,13 @@ const A5TStaking = () => {
                         ? utils.numberWithCommas(
                             parseFloat(poolbundle[1].stakeAmount).toFixed(3)
                           )
-                        : 0}{" "}
+                        : 0} A5T-USDC Pair Token{" "}
                       </>
                     ) : (
                       "-"
                     )}
                      
-                      A5T-USDC Pair Token
+                     
                     </CardFieldValue>
                   </CardFields>
                   <CardFields>
@@ -745,7 +751,10 @@ const A5TStaking = () => {
                       Your Reward at the end of the Pool
                     </CardFieldName>
                     <CardFieldValue>
-                      {poolbundle.length > 0 && poolbundle[1]?.TVL == 0
+                      
+                      {poolbundle.length > 0 ? (
+                      <> 
+                      {poolbundle[1]?.TVL == 0
                         ? 0
                         : utils.numberWithCommas(
                             parseFloat(
@@ -753,8 +762,11 @@ const A5TStaking = () => {
                                 (poolbundle[1]?.TVL / 1e18)) *
                                 (poolbundle[1]?.total_A5T_Reward / 1e18)
                             ).toFixed(3)
-                          )}{" "}
-                      A5T
+                        )}{" "}
+                    A5T
+                      </>   ) : (
+                        "-"
+                      )}
                     </CardFieldValue>
                   </CardFields>
                 </CardContent>
@@ -917,96 +929,4 @@ const A5TStaking = () => {
 };
 
 export default A5TStaking;
-//table backup
-
-{
-  /* <div className="staking-container-2">
-<div className="staking-section-3">
-  <StakingTableLayout>
-    <table className="staking-table">
-      <thead className="staking-table-thead bg-heading">
-        <tr className="staking-table-tr bg-heading">
-          <th className="staking-table-th">Event</th>
-          <th className="staking-table-th">Staker</th>
-          <th className="staking-table-th">Amount</th>
-          <th className="staking-table-th">Pool Number</th>
-          <th className="staking-table-th"> Transaction</th>
-        </tr>
-      </thead>
-      <tbody className="staking-table-tbody">
-        {state?.history.map((value) => {
-          return (
-            <>
-              {value.event == "rewardEvent" && (
-                <tr className="staking-table-tr">
-                  <td className="staking-table-td">{value.event}</td>
-                  <td className="staking-table-td">
-                    <a
-                      style={{ color: "#47a1fb" }}
-                      href={`https://ropsten.etherscan.io/address/${value.returnValues.staker}`}
-                      target="_blank"
-                    >
-                      {utils.truncateStr(value.returnValues.staker, 8)}
-                    </a>
-                  </td>
-                  <td className="staking-table-td">
-                    {parseFloat(
-                      value.returnValues.reward_amount / 1e18
-                    ).toFixed(3)}{" "}
-                    A5T{" "}
-                  </td>
-                  <td className="staking-table-td">
-                    {value.returnValues.pool_number}
-                  </td>
-                  <td className="staking-table-td">
-                    <a
-                      style={{ color: "#47a1fb" }}
-                      href={`https://ropsten.etherscan.io/tx/${value.transactionHash}`}
-                      target="_blank"
-                    >
-                      {utils.truncateStr(value.transactionHash, 8)}
-                    </a>
-                  </td>
-                </tr>
-              )}
-              {value.event == "stakeEvent" && (
-                <tr className="staking-table-tr">
-                  <td className="staking-table-td">{value.event}</td>
-                  <td className="staking-table-td">
-                    <a
-                      style={{ color: "#47a1fb" }}
-                      href={`https://ropsten.etherscan.io/address/${value.returnValues.staker}`}
-                      target="_blank"
-                    >
-                      {utils.truncateStr(value.returnValues.staker, 8)}
-                    </a>
-                  </td>
-                  <td className="staking-table-td">
-                    {parseFloat(
-                      value.returnValues.LP_amount / 1e18
-                    ).toFixed(3)}{" "}
-                    A5T-USDC
-                  </td>
-                  <td className="staking-table-td">
-                    {value.returnValues.pool_number}
-                  </td>
-                  <td className="staking-table-td">
-                    <a
-                      style={{ color: "#47a1fb" }}
-                      href={`https://ropsten.etherscan.io/tx/${value.transactionHash}`}
-                      target="_blank"
-                    >
-                      {utils.truncateStr(value.transactionHash, 8)}
-                    </a>
-                  </td>
-                </tr>
-              )}
-            </>
-          );
-        })}
-      </tbody>
-    </table>
-  </StakingTableLayout>
-</div>
-</div> */
-}
+ 
