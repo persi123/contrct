@@ -621,12 +621,11 @@ const A5TStaking = () => {
                           Unstake and Claim Reward
                         </Button>
                       ) : (
-                        // <Button border="blue" disabled>
-                        //   Claimed or N/A
-                        // </Button>
-                         <InformationText>
-                          Claimed or N/A
-                       </InformationText>
+                        poolbundle[0].stakeAmount >0 ?
+                          <InformationText>
+                             Claimed
+                         </InformationText>
+                         : null
                       )}
                     </>
                   ) : (
@@ -768,9 +767,11 @@ const A5TStaking = () => {
                             Unstake and Claim Reward
                           </Button>
                         ) : (
-                        <InformationText>
-                           Claimed or N/A
-                       </InformationText>
+                        poolbundle[1].stakeAmount >0 ?
+                          <InformationText>
+                             Claimed
+                         </InformationText>
+                         : null
                         )}
                       </>
                     ) : (
