@@ -355,7 +355,7 @@ const A5TStaking = () => {
   const openLink = (addr) => {
     window.open(addr, "_blank");
   };
-  console.log("history",history)
+  //console.log("history",history)
   return (
     <>
       {/* {popup} */}
