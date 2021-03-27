@@ -13,6 +13,7 @@ import {
   NoDataParentDiv,
   StakingTableLayout,
   StakeButtonGroup,
+  InformationText
 } from "./Staking.styled";
 import { AlertContext } from "../../Components/Alert/alert";
 import SweetAlert from "react-bootstrap-sweetalert";
@@ -45,7 +46,7 @@ const A5TStaking = () => {
   const [approved, setapproved] = useState(null);
   const [history, sethistory] = useState([]);
   const [popup, setpopup] = useState(null);
-  const [showModal, setshowModal] = useState(false);
+  const [showModal, setshowModal] = useState(true);
   const [selectedPool, setselectedPool] = useState("");
   const moveToPool = useRef(null);
 
@@ -220,7 +221,7 @@ const A5TStaking = () => {
   //stake function
   const stake = (pool_number) => {
     if (end_date == 0 || start_date == 0) {
-      AlertFn[4].default("Pool Start End Date not set");
+      AlertFn[4].default("Pool Start and End Date not set yet");
       //salert("Pool Start End Date not set");
       return;
     } else {
@@ -354,7 +355,7 @@ const A5TStaking = () => {
   const openLink = (addr) => {
     window.open(addr, "_blank");
   };
-
+  console.log("history",history)
   return (
     <>
       {/* {popup} */}
@@ -620,15 +621,19 @@ const A5TStaking = () => {
                           Unstake and Claim Reward
                         </Button>
                       ) : (
-                        <Button border="blue" disabled>
+                        // <Button border="blue" disabled>
+                        //   Claimed or N/A
+                        // </Button>
+                         <InformationText>
                           Claimed or N/A
-                        </Button>
+                       </InformationText>
                       )}
                     </>
                   ) : (
                     <>
                       {approved != null ? (
                         !approved ? (
+                         
                           <Button border="blue" onClick={() => approve()}>
                             Approve
                           </Button>
@@ -763,9 +768,9 @@ const A5TStaking = () => {
                             Unstake and Claim Reward
                           </Button>
                         ) : (
-                          <Button border="blue" disabled>
-                            Claimed or N/A
-                          </Button>
+                        <InformationText>
+                           Claimed or N/A
+                       </InformationText>
                         )}
                       </>
                     ) : (
@@ -799,13 +804,13 @@ const A5TStaking = () => {
         className="staking-container-2 mt-3"
         style={{ marginBottom: "1rem" }}
       >
-        <div className="staking-section-3 rounded-lg">
+        <div className="staking-section-3 ">
           {/* <TextHeader title={"Transaction History"} /> */}
           <SubHeader title={"POOLS TRANSACTION HISTORY"} />
           <StakingTableLayout>
             <table className="new-table">
               <thead>
-                <tr className="rounded-lg">
+                <tr>
                   <th>Event</th>
                   <th>Staker</th>
                   <th>Amount</th>

@@ -62,7 +62,11 @@
   
   .bg-black {
     background: #000; }
-  
+
+    #form-new{
+      background-color: #fff;
+      color: #46ddb0;
+    }
   .form-control {
     height: 43px;
     border-radius: 30px;
@@ -73,6 +77,10 @@
       -webkit-box-shadow: none !important;
       box-shadow: none !important; }
   
+      #form-new:focus,#form-new:active,#form-new:hover{
+      background-color: #fff;
+      color: #46ddb0;
+      }
   .site-section {
     padding: 2.5em 0; }
     @media (min-width: 768px) {

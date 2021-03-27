@@ -242,11 +242,11 @@ export default class Home extends Component {
                 <div className="col-md-6 mb-5">
                   <form action="#" className="p-5 bg-white">
                       <label className="text-black" for="subject">Set Start Date: {this.state.start_date != 0 ? utils.convertTimeStampNoTime(this.state.start_date*1000): 'Not Set'}</label> <br/>
-                      <input type="date" name="startdate" className="form-control" placeholder="Select a date (UTC)" />
+                      <input type="date" name="startdate" className="form-control" id="form-new" placeholder="Select a date (UTC)" />
                       <a href={void(0)} className="btn btn-primary" onClick={()=>this.setStartDate()}>Set</a>
                       <br/><br/>
                       <label className="text-black" for="subject">Set End Date: {this.state.end_date != 0 ? utils.convertTimeStampNoTime(this.state.end_date*1000): 'Not Set'}</label> <br/>
-                      <input type="date" name="enddate" className="form-control" placeholder="Select a date (UTC)" />
+                      <input type="date" name="enddate" className="form-control" id="form-new" placeholder="Select a date (UTC)" />
                       <a href={void(0)} className="btn btn-primary" onClick={()=>this.setEndDate()}>Set</a>
                       <p id="setStartDate_message"></p>
                       <p id="setEndDate_message"></p>
@@ -255,11 +255,11 @@ export default class Home extends Component {
                 <div className="col-md-6 mb-5">
                   <form action="#" className="p-5 bg-white">
                       <label className="text-black" for="subject">Change Pool 1 Duration: {}</label> <br/>
-                      <input type="number" name="duration1" className="form-control" placeholder="Duration in seconds" />
+                      <input type="number" name="duration1" className="form-control" id="form-new" placeholder="Duration in seconds" />
                       <a href={void(0)} className="btn btn-primary" onClick={()=>this.setPoolDuration(1)}>Set</a>
                       <br/><br/>
                       <label className="text-black" for="subject">Change Pool 2 Duration: {}</label> <br/>
-                      <input type="number" name="duration2" className="form-control" placeholder="Duration in seconds" />
+                      <input type="number" name="duration2" className="form-control"  id="form-new" placeholder="Duration in seconds" />
                       <a href={void(0)} className="btn btn-primary" onClick={()=>this.setPoolDuration(2)}>Set</a>
                       <p id="setDuration1_message"></p>
                       <p id="setDuration2_message"></p>
@@ -271,11 +271,11 @@ export default class Home extends Component {
                   <div className="col-md-6 mb-5">
                     <form action="#" className="p-5 bg-white">
                         <label className="text-black" for="subject">Change Pool 1 Reward: {}</label> <br/>
-                        <input type="number" name="reward1" className="form-control" placeholder="Reward in A5T" />
+                        <input type="number" name="reward1" className="form-control" id="form-new"  placeholder="Reward in A5T" />
                         <a href={void(0)} className="btn btn-primary" onClick={()=>this.setPoolReward(1)}>Set</a>
                         <br/><br/>
                         <label className="text-black" for="subject">Change Pool 2 Reward: {}</label> <br/>
-                        <input type="number" name="reward2" className="form-control" placeholder="Reward in A5T" />
+                        <input type="number" name="reward2" className="form-control"  id="form-new" placeholder="Reward in A5T" />
                         <a href={void(0)} className="btn btn-primary" onClick={()=>this.setPoolReward(2)}>Set</a>
                         <p id="setReward1_message"></p>
                         <p id="setReward2_message"></p>

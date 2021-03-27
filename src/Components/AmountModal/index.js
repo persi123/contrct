@@ -31,8 +31,8 @@ const AmountModal = ({
 
   const handleConfirm = (e) => {
     if (amount && amountError === false && insufficientFundError === false) {
-      const amountToSend = toFixed(amount, 2);
-      getStakeDetail(poolNumber, parseFloat(amountToSend));
+     //const amountToSend = toFixed(amount, 2);
+      getStakeDetail(poolNumber, parseFloat(amount));
     } else if (!amount) setamountError(true);
   };
 
@@ -40,15 +40,15 @@ const AmountModal = ({
     setamountError(false);
     setinsufficientFundError(false);
     const netBalance = utils.numberWithCommas(parseFloat(balance).toFixed(3));
-    setAmount(toFixed(netBalance, 2));
+    setAmount(parseFloat(balance));
   };
 
   const handleInputAmount = (e) => {
     setamountError(false);
     setinsufficientFundError(false);
     let val = parseFloat(e.target.value);
-    const netBalance = utils.numberWithCommas(parseFloat(balance).toFixed(3));
-
+   // const netBalance = utils.numberWithCommas(parseFloat(balance).toFixed(3));
+    const netBalance = parseFloat(balance) 
     if (!val) {
       setamountError(true);
       setinsufficientFundError(false);

@@ -22,6 +22,12 @@ export const Card = styled.div`
     overflow-x:scroll;
   }
 `;
+
+export const InformationText=styled.span`
+font-size: 1.2rem;
+font-weight: 600;
+color:#00a1fd;
+`
 export const CardTitle = styled.div`
   font-size: 1.2rem;
   font-weight: 500;
@@ -335,7 +341,7 @@ export const StakingTableLayout = styled.div`
   width: 100%;
   min-width: 280px;
   box-shadow: #020024 0px 0px 3px 0px;
-  border-radius: 10px;
+  border-radius: 3px;
   max-height: 700px;
   overflow-y: scroll;
   &::-webkit-scrollbar {
