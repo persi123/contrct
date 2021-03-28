@@ -23,7 +23,7 @@ const eth = {
 	          window.web3 = new Web3(window.web3.currentProvider);
 	      } else {
 	          //alert('Need Metamask/TrusWallet');
-	          const infura = 'https://ropsten.infura.io/v3/c3ddecfcf85f47d292f9a97ee00e03bc';
+	          const infura = 'https://mainnet.infura.io/v3/d298159dad4444f9ad7a0b7f52c00577';
         	  window.web3 = new Web3(new Web3.providers.HttpProvider(infura));
         	  eth.isInfura = true;
 	      }

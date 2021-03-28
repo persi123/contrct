@@ -367,7 +367,7 @@ const A5TStaking = () => {
           <div className="card text-white mx-auto">
             <div className="card-body">
               <CardSubTitle className="staking-sub-title">
-                <span class="badge badge-pill badge-primary py-2 px-3">
+                <span className="badge badge-pill badge-primary py-2 px-3">
                   Staking Details
                 </span>
               </CardSubTitle>
@@ -378,7 +378,7 @@ const A5TStaking = () => {
               >
                 <CardFields>
                   <CardFieldName>Staking Contract</CardFieldName>
-                  <CardFieldValue  onClick={() =>{window.open(`https://ropsten.etherscan.io/address/${contracts.Staking_Address}`, '_blank')}} >{contracts.Staking_Address}</CardFieldValue>
+                  <CardFieldValue  onClick={() =>{window.open(`https://etherscan.io/address/${contracts.Staking_Address}`, '_blank')}} >{contracts.Staking_Address}</CardFieldValue>
                 </CardFields>
                 <CardFields>
                   <CardFieldName>Staking Contract Balance</CardFieldName>
@@ -488,7 +488,7 @@ const A5TStaking = () => {
                   border="blue"
                   onClick={() =>
                     openLink(
-                      "https://a5t.io/uniswap/#/add/0x2833F57918b7469270eFDd5088F510AdC2efb473/0x38fdDbD09Cc4e617b85DA61F4B57D3Cda1897b87"
+                      "https://app.uniswap.org/#/add/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/0xe8272210954eA85DE6D2Ae739806Ab593B5d9c51"
                     )
                   }
                 >
@@ -498,7 +498,7 @@ const A5TStaking = () => {
                   border="red"
                   onClick={() =>
                     openLink(
-                      "https://a5t.io/uniswap/#/remove/0x2833F57918b7469270eFDd5088F510AdC2efb473/0x38fdDbD09Cc4e617b85DA61F4B57D3Cda1897b87"
+                      "https://app.uniswap.org/#/remove/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/0xe8272210954eA85DE6D2Ae739806Ab593B5d9c51"
                     )
                   }
                 >
@@ -519,7 +519,7 @@ const A5TStaking = () => {
           <div className="card text-white mx-auto">
             <div className="card-body">
               <CardSubTitle className="staking-sub-title">
-                <span class="badge badge-pill badge-primary py-2 px-3">
+                <span className="badge badge-pill badge-primary py-2 px-3">
                   Pool 1
                 </span>
               </CardSubTitle>
@@ -661,7 +661,7 @@ const A5TStaking = () => {
             <div className="card text-white mx-auto">
               <div className="card-body">
                 <CardSubTitle className="staking-sub-title">
-                  <span class="badge badge-pill badge-primary py-2 px-3">
+                  <span className="badge badge-pill badge-primary py-2 px-3">
                     Pool 2
                   </span>
                 </CardSubTitle>
@@ -842,7 +842,7 @@ const A5TStaking = () => {
                             <td>
                               <a
                                 // style={{ color: "#47a1fb" }}
-                                href={`https://ropsten.etherscan.io/address/${value.returnValues.staker}`}
+                                href={`https://etherscan.io/address/${value.returnValues.staker}`}
                                 target="_blank"
                               >
                                 {utils.truncateStr(
@@ -861,7 +861,7 @@ const A5TStaking = () => {
                             <td>
                               <a
                                 //style={{ color: "#47a1fb" }}
-                                href={`https://ropsten.etherscan.io/tx/${value.transactionHash}`}
+                                href={`https://etherscan.io/tx/${value.transactionHash}`}
                                 target="_blank"
                               >
                                 {utils.truncateStr(value.transactionHash, 8)}
@@ -875,7 +875,7 @@ const A5TStaking = () => {
                             <td>
                               <a
                                 style={{ color: "#47a1fb" }}
-                                href={`https://ropsten.etherscan.io/address/${value.returnValues.staker}`}
+                                href={`https://etherscan.io/address/${value.returnValues.staker}`}
                                 target="_blank"
                               >
                                 {utils.truncateStr(
@@ -894,7 +894,7 @@ const A5TStaking = () => {
                             <td>
                               <a
                                 style={{ color: "#47a1fb" }}
-                                href={`https://ropsten.etherscan.io/tx/${value.transactionHash}`}
+                                href={`https://etherscan.io/tx/${value.transactionHash}`}
                                 target="_blank"
                               >
                                 {utils.truncateStr(value.transactionHash, 8)}
