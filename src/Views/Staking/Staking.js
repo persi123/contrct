@@ -225,6 +225,17 @@ const A5TStaking = () => {
       //salert("Pool Start End Date not set");
       return;
     } else {
+      var timeStamp = parseInt(new Date().getTime() / 1000);
+      if (timeStamp < start_date ){
+        AlertFn[4].default("Not time to stake yet");
+        //salert("Pool Start End Date not set");
+        return;
+      }
+      if (timeStamp > end_date ){
+        AlertFn[4].default("Not time to stake");
+        //salert("Pool Start End Date not set");
+        return;
+      }
       setselectedPool(pool_number);
       setshowModal(true);
     }
