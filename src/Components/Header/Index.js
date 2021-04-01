@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import logo from "../../assets/A5tDark.png";
 import "./Index.scss";
+import styled from "styled-components";
 
 export const Header = ({ handlePoolMove }) => {
   const { pathname } = useLocation();
@@ -15,7 +16,7 @@ export const Header = ({ handlePoolMove }) => {
   };
 
   return (
-    <div style={{ backgroundColor: "#181c1f",position:"fixed",width:"100%" ,top:0,zIndex:10}}>
+    <Container>
       <nav className="navbar navbar-expand-lg navbar-mainbg">
         <div className="navbar-brand navbar-logo" href="#">
           <img
@@ -98,6 +99,14 @@ export const Header = ({ handlePoolMove }) => {
           </ul>
         </div>
       </nav>
-    </div>
+    </Container>
   );
 };
+
+const Container=styled.div`
+background-color: #181c1f;
+position:fixed;
+width:100%;
+top:0;
+z-index:10;
+`
