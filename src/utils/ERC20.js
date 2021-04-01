@@ -3,7 +3,7 @@ import eth from "./eth";
 
 const ERC20 = {
 
-	async balanceOf(ERC20Contract,address){
+	async balanceOf(ERC20Contract,address,decimal){
 		if (ERC20Contract == null) return 0;
 
 		let res = await ERC20Contract
@@ -11,7 +11,7 @@ const ERC20 = {
         .balanceOf(address)
         .call();
 
-        return parseFloat(res/1e18);
+        return parseFloat(res/(10**decimal));
 	},
 	async allowance(ERC20Contract,owner,spender){
 		if (ERC20Contract == null) return 0;

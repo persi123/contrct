@@ -110,6 +110,7 @@ input[type=number]::placeholder{
     max-width:90%;
     overflow-x:scroll;
   }
+ 
 }
 
 @media(max-width : 991px){
@@ -292,6 +293,7 @@ max-width: 1340px;
   background-color: #05040440;
   box-shadow: #020024 0px 0px 3px 0px;
   border-radius: 6px;
+  
   // max-height: 306px;
   // overflow-x: scroll;
 
@@ -321,16 +323,7 @@ max-width: 1340px;
   min-height: 100px;
   overflow-y:auto;
   height:auto !important;
-  height:100px;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: #b4d9fd;
-      opacity: 0.4;
-    }
+
 }
 
 .new-table tbody tr{

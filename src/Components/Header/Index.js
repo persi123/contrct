@@ -54,18 +54,18 @@ export const Header = ({ handlePoolMove }) => {
                     pathname === "/#/" ? "active" : ""
                   }`}
                 >
-                  <a className="nav-link" href="/#/">
+                  <span className="nav-link" style={{cursor:"pointer"}}>
                     A5T-USDC Staking
-                  </a>
+                  </span>
                 </li>
                 <li
                   className={`d-none d-lg-block ${
                     pathname === "/uniswap" ? "active" : ""
                   }`}
                 >
-                  <a className="nav-link" href="/#/" onClick={handlePoolMove}>
+                  <span className="nav-link" onClick={handlePoolMove} style={{cursor:"pointer"}}>
                     Pools
-                  </a>
+                  </span>
                 </li>
               </ul>
             </li>
@@ -74,22 +74,21 @@ export const Header = ({ handlePoolMove }) => {
                 pathname === "/" ? "active" : ""
               }`}
             >
-              <a className="d-inline-block nav-link" href="/#/">
+              <span className="d-inline-block nav-link">
                 A5T-USDC Staking
-              </a>
+              </span>
             </li>
             <li
               className={`d-lg-none my-1 my-lg-0 nav-item ${
                 pathname === "/" ? "active" : ""
               }`}
             >
-              <a
+              <span
                 className="d-inline-block nav-link"
-                href="/#/"
                 onClick={handlePoolMove}
               >
                 Pool
-              </a>
+              </span>
             </li>
             {/* <li className={`nav-item my-1 my-lg-0 exchange ${pathname === "/admin" ? "active" : ""}`} onClick={() => NavigateTo('https://www.alpha5.io/#/', '_blank')}>
                    <div>

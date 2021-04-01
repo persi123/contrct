@@ -23,7 +23,7 @@ const eth = {
 	          window.web3 = new Web3(window.web3.currentProvider);
 	      } else {
 	          //alert('Need Metamask/TrusWallet');
-	          const infura = 'https://ropsten.infura.io/v3/c3ddecfcf85f47d292f9a97ee00e03bc';
+	          const infura = 'https://mainnet.infura.io/v3/d298159dad4444f9ad7a0b7f52c00577';
         	  window.web3 = new Web3(new Web3.providers.HttpProvider(infura));
         	  eth.isInfura = true;
 	      }
@@ -63,11 +63,12 @@ const eth = {
 		      contracts.Staking_Address
 		    );
 		    if (!eth.isInfura){
-			    eth.A5T_balance = await ERC20.balanceOf(eth.A5T,address);
-			    eth.USDC_balance = await ERC20.balanceOf(eth.USDC,address);
-			    eth.A5T_USDC_balance = await ERC20.balanceOf(eth.A5T_USDC,address);
+			    eth.A5T_balance = await ERC20.balanceOf(eth.A5T,address,18);
+			    eth.USDC_balance = await ERC20.balanceOf(eth.USDC,address,6);
+			    eth.A5T_USDC_balance = await ERC20.balanceOf(eth.A5T_USDC,address,18);
 			}
-		    eth.Staking_Balance = await ERC20.balanceOf(eth.A5T,contracts.Staking_Address);
+		    eth.Staking_Balance = await ERC20.balanceOf(eth.A5T,contracts.Staking_Address,18);
+		    console.log(eth.USDC_balance);
 	        return true;
 	      
 	}

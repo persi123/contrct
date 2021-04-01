@@ -65,12 +65,12 @@ const A5TStaking = () => {
      }
   }, []);
 
-  // const handlePoolMove = (event) => {
-  //   window.scrollTo({
-  //     top: 1800,
-  //     behavior: "smooth",
-  //   });
-  // };
+  const handlePoolMove = (event) => {
+    window.scrollTo({
+      top: 1800,
+      behavior: "smooth",
+    });
+  };
   const handleStakeAmount = (pool_number, value) => {
     setshowModal(false);
     onStake(pool_number, value);
@@ -226,6 +226,17 @@ const A5TStaking = () => {
       //salert("Pool Start End Date not set");
       return;
     } else {
+      var timeStamp = parseInt(new Date().getTime() / 1000);
+      if (timeStamp < start_date ){
+        AlertFn[4].default("Not time to stake yet");
+        //salert("Pool Start End Date not set");
+        return;
+      }
+      if (timeStamp > end_date ){
+        AlertFn[4].default("Not time to stake");
+        //salert("Pool Start End Date not set");
+        return;
+      }
       setselectedPool(pool_number);
       setshowModal(true);
     }
@@ -356,12 +367,12 @@ const A5TStaking = () => {
   const openLink = (addr) => {
     window.open(addr, "_blank");
   };
-  console.log("history",history)
+  //console.log("history",history)
   return (
     <div style={{position:"relative"}}>
       {/* {popup} */}
       <AmountModal />
-      <Header  />
+      <Header handlePoolMove={handlePoolMove}  />
       <Banner/>
       <SubHeader title={"A5T-USDC LP STAKING"} />
       <div className="staking-container">
@@ -369,7 +380,7 @@ const A5TStaking = () => {
           <div className="card text-white mx-auto">
             <div className="card-body">
               <CardSubTitle className="staking-sub-title">
-                <span class="badge badge-pill badge-primary py-2 px-3">
+                <span className="badge badge-pill badge-primary py-2 px-3">
                   Staking Details
                 </span>
               </CardSubTitle>
@@ -380,7 +391,7 @@ const A5TStaking = () => {
               >
                 <CardFields>
                   <CardFieldName>Staking Contract</CardFieldName>
-                  <CardFieldValue  onClick={() =>{window.open(`https://ropsten.etherscan.io/address/${contracts.Staking_Address}`, '_blank')}} >{contracts.Staking_Address}</CardFieldValue>
+                  <CardFieldValue  onClick={() =>{window.open(`https://etherscan.io/address/${contracts.Staking_Address}`, '_blank')}} >{contracts.Staking_Address}</CardFieldValue>
                 </CardFields>
                 <CardFields>
                   <CardFieldName>Staking Contract Balance</CardFieldName>
@@ -490,7 +501,7 @@ const A5TStaking = () => {
                   border="blue"
                   onClick={() =>
                     openLink(
-                      "https://a5t.io/uniswap/#/add/0x2833F57918b7469270eFDd5088F510AdC2efb473/0x38fdDbD09Cc4e617b85DA61F4B57D3Cda1897b87"
+                      "https://app.uniswap.org/#/add/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/0xe8272210954eA85DE6D2Ae739806Ab593B5d9c51"
                     )
                   }
                 >
@@ -500,7 +511,7 @@ const A5TStaking = () => {
                   border="red"
                   onClick={() =>
                     openLink(
-                      "https://a5t.io/uniswap/#/remove/0x2833F57918b7469270eFDd5088F510AdC2efb473/0x38fdDbD09Cc4e617b85DA61F4B57D3Cda1897b87"
+                      "https://app.uniswap.org/#/remove/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/0xe8272210954eA85DE6D2Ae739806Ab593B5d9c51"
                     )
                   }
                 >
@@ -521,7 +532,7 @@ const A5TStaking = () => {
           <div className="card text-white mx-auto">
             <div className="card-body">
               <CardSubTitle className="staking-sub-title">
-                <span class="badge badge-pill badge-primary py-2 px-3">
+                <span className="badge badge-pill badge-primary py-2 px-3">
                   Pool 1
                 </span>
               </CardSubTitle>
@@ -558,11 +569,11 @@ const A5TStaking = () => {
                   {poolbundle.length > 0 ? (
                       <> {utils.numberWithCommas(
                         Math.round(poolbundle[0].total_A5T_Reward / 1e18)
-                      )}{" "}</>
+                      )} A5T{" "}</>
                     ) : (
                       "-"
                     )}
-                    A5T
+                   
                   </CardFieldValue>
                 </CardFields>
                 <CardFields>
@@ -571,12 +582,12 @@ const A5TStaking = () => {
                   {poolbundle.length > 0 ? (
                       <> {utils.numberWithCommas(
                         parseFloat(poolbundle[0].TVL / 1e18).toFixed(3)
-                      )}{" "}</>
+                      )} A5T-USDC Pair Token{" "}</>
                     ) : (
                       "-"
                     )}
                     
-                    A5T-USDC Pair Token
+                    
                   </CardFieldValue>
                 </CardFields>
                 <CardFields>
@@ -587,13 +598,13 @@ const A5TStaking = () => {
                         ? utils.numberWithCommas(
                             parseFloat(poolbundle[0].stakeAmount).toFixed(3)
                           )
-                        : 0}{" "}</>
+                        : 0} A5T-USDC Pair Token {" "}</>
                     ) : (
                       "-"
                     )}
                     
                     
-                    A5T-USDC Pair Token
+                   
                   </CardFieldValue>
                 </CardFields>
                 <CardFields>
@@ -601,7 +612,9 @@ const A5TStaking = () => {
                     Your Reward at the end of the Pool
                   </CardFieldName>
                   <CardFieldValue>
-                    {poolbundle.length > 0 && poolbundle[0]?.TVL == 0
+                  {poolbundle.length > 0 ? (
+                      <> 
+                      {poolbundle[0]?.TVL == 0
                       ? 0
                       : utils.numberWithCommas(
                           parseFloat(
@@ -611,6 +624,10 @@ const A5TStaking = () => {
                           ).toFixed(3)
                         )}{" "}
                     A5T
+                      </>   ) : (
+                        "-"
+                      )}
+                    
                   </CardFieldValue>
                 </CardFields>
               </CardContent>
@@ -657,7 +674,7 @@ const A5TStaking = () => {
             <div className="card text-white mx-auto">
               <div className="card-body">
                 <CardSubTitle className="staking-sub-title">
-                  <span class="badge badge-pill badge-primary py-2 px-3">
+                  <span className="badge badge-pill badge-primary py-2 px-3">
                     Pool 2
                   </span>
                 </CardSubTitle>
@@ -699,13 +716,13 @@ const A5TStaking = () => {
                       <>
                        {utils.numberWithCommas(
                         Math.round(poolbundle[1].total_A5T_Reward / 1e18)
-                      )}{" "}
+                      )} A5T{" "}
                       </>
                     ) : (
                       "-"
                     )}
                      
-                      A5T
+                      
                     </CardFieldValue>
                   </CardFields>
                   <CardFields>
@@ -715,13 +732,13 @@ const A5TStaking = () => {
                       <>
                         {utils.numberWithCommas(
                         parseFloat(poolbundle[1].TVL / 1e18).toFixed(3)
-                      )}{" "}
+                      )}  A5T-USDC Pair Token{" "}
                       </>
                     ) : (
                       "-"
                     )}
                      
-                      A5T-USDC Pair Token
+                    
                     </CardFieldValue>
                   </CardFields>
                   <CardFields>
@@ -733,13 +750,13 @@ const A5TStaking = () => {
                         ? utils.numberWithCommas(
                             parseFloat(poolbundle[1].stakeAmount).toFixed(3)
                           )
-                        : 0}{" "}
+                        : 0} A5T-USDC Pair Token{" "}
                       </>
                     ) : (
                       "-"
                     )}
                      
-                      A5T-USDC Pair Token
+                     
                     </CardFieldValue>
                   </CardFields>
                   <CardFields>
@@ -747,7 +764,10 @@ const A5TStaking = () => {
                       Your Reward at the end of the Pool
                     </CardFieldName>
                     <CardFieldValue>
-                      {poolbundle.length > 0 && poolbundle[1]?.TVL == 0
+                      
+                      {poolbundle.length > 0 ? (
+                      <> 
+                      {poolbundle[1]?.TVL == 0
                         ? 0
                         : utils.numberWithCommas(
                             parseFloat(
@@ -755,8 +775,11 @@ const A5TStaking = () => {
                                 (poolbundle[1]?.TVL / 1e18)) *
                                 (poolbundle[1]?.total_A5T_Reward / 1e18)
                             ).toFixed(3)
-                          )}{" "}
-                      A5T
+                        )}{" "}
+                    A5T
+                      </>   ) : (
+                        "-"
+                      )}
                     </CardFieldValue>
                   </CardFields>
                 </CardContent>
@@ -832,7 +855,7 @@ const A5TStaking = () => {
                             <td>
                               <a
                                 // style={{ color: "#47a1fb" }}
-                                href={`https://ropsten.etherscan.io/address/${value.returnValues.staker}`}
+                                href={`https://etherscan.io/address/${value.returnValues.staker}`}
                                 target="_blank"
                               >
                                 {utils.truncateStr(
@@ -851,7 +874,7 @@ const A5TStaking = () => {
                             <td>
                               <a
                                 //style={{ color: "#47a1fb" }}
-                                href={`https://ropsten.etherscan.io/tx/${value.transactionHash}`}
+                                href={`https://etherscan.io/tx/${value.transactionHash}`}
                                 target="_blank"
                               >
                                 {utils.truncateStr(value.transactionHash, 8)}
@@ -865,7 +888,7 @@ const A5TStaking = () => {
                             <td>
                               <a
                                 style={{ color: "#47a1fb" }}
-                                href={`https://ropsten.etherscan.io/address/${value.returnValues.staker}`}
+                                href={`https://etherscan.io/address/${value.returnValues.staker}`}
                                 target="_blank"
                               >
                                 {utils.truncateStr(
@@ -884,7 +907,7 @@ const A5TStaking = () => {
                             <td>
                               <a
                                 style={{ color: "#47a1fb" }}
-                                href={`https://ropsten.etherscan.io/tx/${value.transactionHash}`}
+                                href={`https://etherscan.io/tx/${value.transactionHash}`}
                                 target="_blank"
                               >
                                 {utils.truncateStr(value.transactionHash, 8)}
@@ -919,96 +942,4 @@ const A5TStaking = () => {
 };
 
 export default A5TStaking;
-//table backup
-
-{
-  /* <div className="staking-container-2">
-<div className="staking-section-3">
-  <StakingTableLayout>
-    <table className="staking-table">
-      <thead className="staking-table-thead bg-heading">
-        <tr className="staking-table-tr bg-heading">
-          <th className="staking-table-th">Event</th>
-          <th className="staking-table-th">Staker</th>
-          <th className="staking-table-th">Amount</th>
-          <th className="staking-table-th">Pool Number</th>
-          <th className="staking-table-th"> Transaction</th>
-        </tr>
-      </thead>
-      <tbody className="staking-table-tbody">
-        {state?.history.map((value) => {
-          return (
-            <>
-              {value.event == "rewardEvent" && (
-                <tr className="staking-table-tr">
-                  <td className="staking-table-td">{value.event}</td>
-                  <td className="staking-table-td">
-                    <a
-                      style={{ color: "#47a1fb" }}
-                      href={`https://ropsten.etherscan.io/address/${value.returnValues.staker}`}
-                      target="_blank"
-                    >
-                      {utils.truncateStr(value.returnValues.staker, 8)}
-                    </a>
-                  </td>
-                  <td className="staking-table-td">
-                    {parseFloat(
-                      value.returnValues.reward_amount / 1e18
-                    ).toFixed(3)}{" "}
-                    A5T{" "}
-                  </td>
-                  <td className="staking-table-td">
-                    {value.returnValues.pool_number}
-                  </td>
-                  <td className="staking-table-td">
-                    <a
-                      style={{ color: "#47a1fb" }}
-                      href={`https://ropsten.etherscan.io/tx/${value.transactionHash}`}
-                      target="_blank"
-                    >
-                      {utils.truncateStr(value.transactionHash, 8)}
-                    </a>
-                  </td>
-                </tr>
-              )}
-              {value.event == "stakeEvent" && (
-                <tr className="staking-table-tr">
-                  <td className="staking-table-td">{value.event}</td>
-                  <td className="staking-table-td">
-                    <a
-                      style={{ color: "#47a1fb" }}
-                      href={`https://ropsten.etherscan.io/address/${value.returnValues.staker}`}
-                      target="_blank"
-                    >
-                      {utils.truncateStr(value.returnValues.staker, 8)}
-                    </a>
-                  </td>
-                  <td className="staking-table-td">
-                    {parseFloat(
-                      value.returnValues.LP_amount / 1e18
-                    ).toFixed(3)}{" "}
-                    A5T-USDC
-                  </td>
-                  <td className="staking-table-td">
-                    {value.returnValues.pool_number}
-                  </td>
-                  <td className="staking-table-td">
-                    <a
-                      style={{ color: "#47a1fb" }}
-                      href={`https://ropsten.etherscan.io/tx/${value.transactionHash}`}
-                      target="_blank"
-                    >
-                      {utils.truncateStr(value.transactionHash, 8)}
-                    </a>
-                  </td>
-                </tr>
-              )}
-            </>
-          );
-        })}
-      </tbody>
-    </table>
-  </StakingTableLayout>
-</div>
-</div> */
-}
+ 

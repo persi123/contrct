@@ -342,14 +342,15 @@ export const StakingTableLayout = styled.div`
   min-width: 280px;
   box-shadow: #020024 0px 0px 3px 0px;
   border-radius: 3px;
-  max-height: 700px;
+  max-height: 1000px;
   overflow-y: scroll;
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: #00a1fd;
     opacity: 0.4;
   }
+  
 `;
 // border-color : #A2A2A2;
