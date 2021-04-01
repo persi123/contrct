@@ -6,10 +6,10 @@ import styled from "styled-components";
 
 export const Header = ({ handlePoolMove }) => {
   const { pathname } = useLocation();
-  // const [navaction, setNavaction] = useState(false);
-  // const toggleNav = () => {
-  //   setNavaction(!navaction);
-  // };
+  const [navaction, setNavaction] = useState(false);
+  const toggleNav = () => {
+    setNavaction(!navaction);
+  };
   const NavigateTo = (link, target = "_self") => {
     // window.location.href = link;
     window.open(link, target);
@@ -36,12 +36,12 @@ export const Header = ({ handlePoolMove }) => {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
-          // onClick={toggleNav}
+          onClick={toggleNav}
         >
           <i className="fas fa-bars text-white"></i>
         </button>
         <div
-          className="collapse navbar-collapse" 
+          className={navaction?"":"collapse navbar-collapse" }
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav w-100">

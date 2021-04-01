@@ -1,0 +1,7 @@
+@font-face{
+    font-family:CodecPro-Light;
+    src: url(../../assets/CodecPro-Light.ttf) format('truetype');
+}
+#main-container{   
+font-family:CodecPro-Light ;
+}
