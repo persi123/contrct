@@ -39,7 +39,7 @@ font-weight:bolder;
     padding: 3px 9px;
 
     span{
-        font-size:12px;
+        font-size:11px;
         }
 }
 `;
