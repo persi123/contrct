@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import logo from "../../assets/A5Tlogo.png";
+import logo from "../../assets/A5tDark.png";
 import "./Index.scss";
 
 export const Header = ({ handlePoolMove }) => {
   const { pathname } = useLocation();
-  const [navaction, setNavaction] = useState(false);
-  const toggleNav = () => {
-    setNavaction(!navaction);
-  };
+  // const [navaction, setNavaction] = useState(false);
+  // const toggleNav = () => {
+  //   setNavaction(!navaction);
+  // };
   const NavigateTo = (link, target = "_self") => {
     // window.location.href = link;
     window.open(link, target);
   };
 
   return (
-    <div style={{ backgroundColor: "#181c1f" }}>
+    <div style={{ backgroundColor: "#181c1f",position:"fixed",width:"100%" ,top:0,zIndex:10}}>
       <nav className="navbar navbar-expand-lg navbar-mainbg">
         <div className="navbar-brand navbar-logo" href="#">
           <img
@@ -35,12 +35,12 @@ export const Header = ({ handlePoolMove }) => {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
-          onClick={toggleNav}
+          // onClick={toggleNav}
         >
           <i className="fas fa-bars text-white"></i>
         </button>
         <div
-          className={!navaction ? "collapse navbar-collapse" : null}
+          className="collapse navbar-collapse" 
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav w-100">

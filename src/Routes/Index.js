@@ -20,7 +20,7 @@ export const App = () => {
       <Switch>
         {/* <Route exact path={"/"} component={Exchange} /> */}
         <Route exact path={"/"} component={Staking} />
-        <Route exact path={"/admin"} component={Admin} />
+        {/* <Route exact path={"/admin"} component={Admin} /> */}
       </Switch>
       </Suspense>
     </HashRouter>

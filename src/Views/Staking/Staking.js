@@ -27,6 +27,7 @@ import { TextHeader } from "../../Components/SubHeader/TextHeader";
 import { Header } from "../../Components/Header/Index";
 import AmountModal from "../../Components/AmountModal";
 import "./Staking.scss";
+import Banner from "../Banner/banner";
 
 const A5TStaking = () => {
   const forceUpdate = useForceUpdate();
@@ -64,12 +65,12 @@ const A5TStaking = () => {
      }
   }, []);
 
-  const handlePoolMove = (event) => {
-    window.scrollTo({
-      top: 1800,
-      behavior: "smooth",
-    });
-  };
+  // const handlePoolMove = (event) => {
+  //   window.scrollTo({
+  //     top: 1800,
+  //     behavior: "smooth",
+  //   });
+  // };
   const handleStakeAmount = (pool_number, value) => {
     setshowModal(false);
     onStake(pool_number, value);
@@ -357,10 +358,11 @@ const A5TStaking = () => {
   };
   console.log("history",history)
   return (
-    <>
+    <div style={{position:"relative"}}>
       {/* {popup} */}
       <AmountModal />
-      <Header handlePoolMove={handlePoolMove} />
+      <Header  />
+      <Banner/>
       <SubHeader title={"A5T-USDC LP STAKING"} />
       <div className="staking-container">
         <div className="staking-section-1">
@@ -912,7 +914,7 @@ const A5TStaking = () => {
           handleStakeAmount(pool_number, value)
         }
       />
-    </>
+    </div>
   );
 };
 
